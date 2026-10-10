@@ -1,0 +1,5 @@
+{
+  "generated": null,
+  "note": "No offline models fetched yet. Run scripts/fetch-models (.mjs or .ps1) to populate this. Until then the extension uses the browser built-in engine.",
+  "pairs": {}
+}

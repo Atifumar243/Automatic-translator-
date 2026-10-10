@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Translate to English (On-Device)",
+  "version": "1.0.0",
+  "description": "Automatically translates any webpage into English on-device. No API keys, no accounts, works offline where supported.",
+
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_title": "Translate to English",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "lib/detect.js",
+        "engines/engine-builtin.js",
+        "engines/engine-online.js",
+        "engines/engine-registry.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["engines/bergamot/*", "models/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "minimum_chrome_version": "138"
+}

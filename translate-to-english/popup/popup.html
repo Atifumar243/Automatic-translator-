@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>Translate to English</title>
+</head>
+<body>
+  <header class="head">
+    <img src="../icons/icon-32.png" width="24" height="24" alt="" />
+    <h1>Translate to English</h1>
+  </header>
+
+  <!-- Global on/off -->
+  <section class="row toggle-row">
+    <div>
+      <div class="label">Auto-translate pages</div>
+      <div class="sub">Every non-English page you open is translated automatically.</div>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="enabled" />
+      <span class="slider"></span>
+    </label>
+  </section>
+
+  <!-- Current-page controls -->
+  <section class="card">
+    <div class="card-title">This page</div>
+    <div class="btn-row">
+      <button id="btnTranslate" class="btn primary">Translate now</button>
+      <button id="btnRestore" class="btn">Show original</button>
+    </div>
+    <div id="status" class="status">Checking…</div>
+  </section>
+
+  <!-- Advanced -->
+  <details class="adv">
+    <summary>Advanced</summary>
+
+    <div class="field">
+      <label for="engine">Translation engine</label>
+      <select id="engine">
+        <option value="auto">Auto (recommended)</option>
+        <option value="builtin">Browser built-in (on-device)</option>
+        <option value="bergamot">Bundled offline models (Bergamot)</option>
+        <option value="online">Online fallback only</option>
+      </select>
+    </div>
+
+    <label class="check">
+      <input type="checkbox" id="allowOnline" />
+      <span>
+        Allow online fallback
+        <em>Only when on-device translation is unavailable. Sends page text to
+        MyMemory (keyless, no account) — <strong>this path is online, not
+        private</strong>.</em>
+      </span>
+    </label>
+  </details>
+
+  <footer class="foot" id="engineInfo"></footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

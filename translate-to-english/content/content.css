@@ -1,0 +1,32 @@
+/* content/content.css — styles for the small, non-intrusive status toast.
+ * Uses a very high z-index and all:initial-ish resets so host-page CSS
+ * cannot distort it. Kept visually quiet on purpose. */
+
+#tl-toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  max-width: 320px;
+  padding: 10px 14px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #fff;
+  background: #1f2937;           /* slate-800 */
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  z-index: 2147483647;           /* max — stay above everything */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .18s ease, transform .18s ease;
+  pointer-events: none;          /* never block clicks on the page */
+}
+
+#tl-toast.tl-toast-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#tl-toast[data-kind="error"] { background: #b91c1c; }   /* red-700 */
+#tl-toast[data-kind="info"]  { background: #1f2937; }   /* slate-800 */
+#tl-toast[data-kind="success"] { background: #047857; } /* emerald-700 */
